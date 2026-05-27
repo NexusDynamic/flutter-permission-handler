@@ -1,3 +1,7 @@
+## 9.4.8
+
+* Added support for the new Android 17 permission `ACCESS_LOCAL_NETWORK`
+
 ## 9.4.7
 
 * Increases minimum supported Flutter version to 3.3.0, and removes code only

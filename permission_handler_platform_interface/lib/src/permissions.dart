@@ -326,6 +326,11 @@ class Permission {
   /// Permission for reading the current background refresh status. (iOS only)
   static const backgroundRefresh = Permission._(39);
 
+  /// Permission for using local network protocols (broad access)
+  ///
+  /// Android 17+ (API 37+)
+  static const accessLocalNetwork = Permission._(40);
+
   /// Returns a list of all possible [PermissionGroup] values.
   static const List<Permission> values = <Permission>[
     // ignore: deprecated_member_use_from_same_package

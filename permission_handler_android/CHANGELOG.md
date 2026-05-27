@@ -1,3 +1,6 @@
+## 13.0.2
+
+* Added support for the new Android 17 permission `ACCESS_LOCAL_NETWORK`
 
 ## 13.0.1
 
