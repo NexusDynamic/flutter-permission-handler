@@ -95,7 +95,7 @@ public class PermissionUtils {
                 return PermissionConstants.PERMISSION_GROUP_AUDIO;
             case Manifest.permission.SCHEDULE_EXACT_ALARM:
                 return PermissionConstants.PERMISSION_GROUP_SCHEDULE_EXACT_ALARM;
-            case Manifest.permission.ACESS_LOCAL_NETWORK:
+            case Manifest.permission.ACCESS_LOCAL_NETWORK:
                 return PermissionConstants.PERMISSION_GROUP_ACCESS_LOCAL_NETWORK;
             default:
                 return PermissionConstants.PERMISSION_GROUP_UNKNOWN;
