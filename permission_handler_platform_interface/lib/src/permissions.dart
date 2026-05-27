@@ -374,6 +374,7 @@ class Permission {
     calendarFullAccess,
     assistant,
     backgroundRefresh,
+    accessLocalNetwork,
   ];
 
   static const List<String> _names = <String>[
@@ -417,6 +418,7 @@ class Permission {
     'calendarFullAccess',
     'assistant',
     'backgroundRefresh',
+    'accessLocalNetwork',
   ];
 
   @override
