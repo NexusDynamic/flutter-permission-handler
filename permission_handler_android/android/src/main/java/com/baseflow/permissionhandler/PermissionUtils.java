@@ -605,9 +605,21 @@ public class PermissionUtils {
                     )
                 ) permissionNames.add(Manifest.permission.SCHEDULE_EXACT_ALARM);
                 break;
+            case PermissionConstants.PERMISSION_GROUP_ACCESS_LOCAL_NETWORK:
+                // The ACCESS_LOCAL_NETWORK permission is introduced in API level 37 (Cinnamon Bun)
+                // API 36 was allowed but only with e.g. NEARBY_WIFI_DEVICES, so we should not handle permissions on pre Android 37 devices.
+                // Prior to 36, this was always allowed.
+                if (
+                    Build.VERSION.SDK_INT >= Build.VERSION_CODES.CINNAMON_BUN &&
+                    hasPermissionInManifest(
+                        context,
+                        permissionNames,
+                        Manifest.permission.ACCESS_LOCAL_NETWORK
+                    )
+                ) permissionNames.add(Manifest.permission.ACCESS_LOCAL_NETWORK);
+                break;
             case PermissionConstants.PERMISSION_GROUP_MEDIA_LIBRARY:
             case PermissionConstants.PERMISSION_GROUP_REMINDERS:
-            case PermissionConstants.PERMISSION_GROUP_ACCESS_LOCAL_NETWORK:
             case PermissionConstants.PERMISSION_GROUP_UNKNOWN:
                 return null;
         }
