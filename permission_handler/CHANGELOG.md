@@ -1,3 +1,7 @@
+## 12.0.2
+
+* Added support for the new Android 17 permission `ACCESS_LOCAL_NETWORK`
+
 ## 12.0.1
 
 - Updates the correspondence between permission groups and the key values of Info.plist in the README.md.
