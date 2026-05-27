@@ -1,3 +1,7 @@
+## 13.0.3
+
+* Bump compileSDK version to 37
+
 ## 13.0.2
 
 * Added support for the new Android 17 permission `ACCESS_LOCAL_NETWORK`
