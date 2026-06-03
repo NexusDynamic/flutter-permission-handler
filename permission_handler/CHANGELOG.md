@@ -7,6 +7,10 @@
 - **BREAKING CHANGE:** , android compilesdk now set to version `compileSdkVersion 37`
 - Added support for the new Android 17 permission `ACCESS_LOCAL_NETWORK`
 
+## 12.0.2
+
+- Updates the documentation to include instructions on Swift Package Manager (SPM) support.
+
 ## 12.0.1
 
 - Updates the correspondence between permission groups and the key values of Info.plist in the README.md.
