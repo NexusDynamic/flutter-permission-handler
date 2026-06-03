@@ -32,38 +32,39 @@ class PermissionHandlerWidget extends StatefulWidget {
   }
 
   @override
-  _PermissionHandlerWidgetState createState() =>
-      _PermissionHandlerWidgetState();
+  PermissionHandlerWidgetState createState() => PermissionHandlerWidgetState();
 }
 
-class _PermissionHandlerWidgetState extends State<PermissionHandlerWidget> {
+/// The state of the [PermissionHandlerWidget] that listens for permission status changes.
+class PermissionHandlerWidgetState extends State<PermissionHandlerWidget> {
   @override
   Widget build(BuildContext context) {
     return Center(
       child: ListView(
-        children: Permission.values
-            .where((permission) {
-              return permission != Permission.unknown &&
-                  permission != Permission.phone &&
-                  permission != Permission.sms &&
-                  permission != Permission.ignoreBatteryOptimizations &&
-                  permission != Permission.accessMediaLocation &&
-                  permission != Permission.activityRecognition &&
-                  permission != Permission.manageExternalStorage &&
-                  permission != Permission.systemAlertWindow &&
-                  permission != Permission.requestInstallPackages &&
-                  permission != Permission.accessNotificationPolicy &&
-                  permission != Permission.bluetoothScan &&
-                  permission != Permission.bluetoothAdvertise &&
-                  permission != Permission.bluetoothConnect &&
-                  permission != Permission.nearbyWifiDevices &&
-                  permission != Permission.videos &&
-                  permission != Permission.audio &&
-                  permission != Permission.scheduleExactAlarm &&
-                  permission != Permission.sensorsAlways;
-            })
-            .map((permission) => PermissionWidget(permission))
-            .toList(),
+        children:
+            Permission.values
+                .where((permission) {
+                  return permission != Permission.unknown &&
+                      permission != Permission.phone &&
+                      permission != Permission.sms &&
+                      permission != Permission.ignoreBatteryOptimizations &&
+                      permission != Permission.accessMediaLocation &&
+                      permission != Permission.activityRecognition &&
+                      permission != Permission.manageExternalStorage &&
+                      permission != Permission.systemAlertWindow &&
+                      permission != Permission.requestInstallPackages &&
+                      permission != Permission.accessNotificationPolicy &&
+                      permission != Permission.bluetoothScan &&
+                      permission != Permission.bluetoothAdvertise &&
+                      permission != Permission.bluetoothConnect &&
+                      permission != Permission.nearbyWifiDevices &&
+                      permission != Permission.videos &&
+                      permission != Permission.audio &&
+                      permission != Permission.scheduleExactAlarm &&
+                      permission != Permission.sensorsAlways;
+                })
+                .map((permission) => PermissionWidget(permission))
+                .toList(),
       ),
     );
   }
@@ -124,17 +125,18 @@ class _PermissionState extends State<PermissionWidget> {
         _permissionStatus.toString(),
         style: TextStyle(color: getPermissionColor()),
       ),
-      trailing: (widget.permission is PermissionWithService)
-          ? IconButton(
-              icon: const Icon(Icons.info, color: Colors.white),
-              onPressed: () {
-                checkServiceStatus(
-                  context,
-                  widget.permission as PermissionWithService,
-                );
-              },
-            )
-          : null,
+      trailing:
+          (widget.permission is PermissionWithService)
+              ? IconButton(
+                icon: const Icon(Icons.info, color: Colors.white),
+                onPressed: () {
+                  checkServiceStatus(
+                    context,
+                    widget.permission as PermissionWithService,
+                  );
+                },
+              )
+              : null,
       onTap: () {
         requestPermission(widget.permission);
       },

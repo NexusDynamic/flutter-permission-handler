@@ -12,7 +12,8 @@ void main() {
       expect(decodeServiceStatus(0), ServiceStatus.disabled);
     });
 
-    test('decodePermissionRequestResult should convert a map<int, int>'
+    test(
+        'decodePermissionRequestResult should convert a map<int, int>'
         'to map<Permission, PermissionStatus>', () {
       var value = <int, int>{1: 1};
 

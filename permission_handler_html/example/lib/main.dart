@@ -16,8 +16,8 @@ void main() {
 ///Defines the main theme color
 final MaterialColor themeMaterialColor =
     BaseflowPluginExample.createMaterialColor(
-      const Color.fromRGBO(48, 49, 60, 1),
-    );
+  const Color.fromRGBO(48, 49, 60, 1),
+);
 
 /// A Flutter application demonstrating the functionality of this plugin
 class PermissionHandlerWidget extends StatefulWidget {
@@ -85,9 +85,7 @@ class _PermissionState extends State<PermissionWidget> {
   }
 
   void _listenForPermissionStatus() async {
-    await _permissionHandler
-        .checkPermissionStatus(widget._permission)
-        .then(
+    await _permissionHandler.checkPermissionStatus(widget._permission).then(
           (status) => setState(() => _permissionStatus = status),
           onError: (error, st) => debugPrint('$error'),
         );
@@ -148,13 +146,11 @@ class _PermissionState extends State<PermissionWidget> {
   }
 
   Future<void> requestPermission(Permission permission) async {
-    await _permissionHandler
-        .requestPermissions([permission])
-        .then(
-          (status) => setState(() {
-            _permissionStatus = status[permission] ?? PermissionStatus.denied;
-          }),
-          onError: (error, st) => debugPrint('$error'),
-        );
+    await _permissionHandler.requestPermissions([permission]).then(
+      (status) => setState(() {
+        _permissionStatus = status[permission] ?? PermissionStatus.denied;
+      }),
+      onError: (error, st) => debugPrint('$error'),
+    );
   }
 }

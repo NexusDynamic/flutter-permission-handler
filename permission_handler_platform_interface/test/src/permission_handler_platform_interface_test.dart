@@ -111,4 +111,5 @@ class MockPermissionHandlerPlatform extends Mock
     with
         // ignore: prefer_mixin
         MockPlatformInterfaceMixin
-    implements PermissionHandlerPlatform {}
+    implements
+        PermissionHandlerPlatform {}

@@ -13,9 +13,9 @@ class WebDelegate {
     web.MediaDevices? devices,
     web.Geolocation? geolocation,
     web.Permissions? permissions,
-  ) : _devices = devices,
-      _geolocation = geolocation,
-      _htmlPermissions = permissions;
+  )   : _devices = devices,
+        _geolocation = geolocation,
+        _htmlPermissions = permissions;
 
   /// The html media devices object used to request camera and microphone permissions.
   final web.MediaDevices? _devices;
@@ -93,8 +93,10 @@ class WebDelegate {
           audioTracks[0].stop();
         }
       }
-    } on web.DOMException {
-      return false;
+    } catch (e) {
+      if (e.isA<web.DOMException>()) {
+        return false;
+      }
     }
 
     return true;
@@ -123,8 +125,10 @@ class WebDelegate {
           videoTracks[0].stop();
         }
       }
-    } on web.DOMException {
-      return false;
+    } catch (e) {
+      if (e.isA<web.DOMException>()) {
+        return false;
+      }
     }
 
     return true;
@@ -132,8 +136,8 @@ class WebDelegate {
 
   Future<bool> _requestNotificationPermission() async {
     return web.Notification.requestPermission().toDart.then(
-      (permission) => (permission == "granted".toJS),
-    );
+          (permission) => (permission == "granted".toJS),
+        );
   }
 
   Future<bool> _requestLocationPermission() async {
@@ -162,8 +166,8 @@ class WebDelegate {
       Permission.notification => await _requestNotificationPermission(),
       Permission.location => await _requestLocationPermission(),
       _ => throw UnsupportedError(
-        'The ${permission.toString()} permission is currently not supported on web.',
-      ),
+          'The ${permission.toString()} permission is currently not supported on web.',
+        ),
     };
 
     if (!permissionGranted) {
