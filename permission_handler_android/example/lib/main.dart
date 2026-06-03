@@ -42,21 +42,20 @@ class _PermissionHandlerWidgetState extends State<PermissionHandlerWidget> {
   Widget build(BuildContext context) {
     return Center(
       child: ListView(
-        children:
-            Permission.values
-                .where((permission) {
-                  return permission != Permission.unknown &&
-                      permission != Permission.mediaLibrary &&
-                      permission != Permission.photosAddOnly &&
-                      permission != Permission.reminders &&
-                      permission != Permission.bluetooth &&
-                      permission != Permission.appTrackingTransparency &&
-                      permission != Permission.criticalAlerts &&
-                      permission != Permission.assistant &&
-                      permission != Permission.backgroundRefresh;
-                })
-                .map((permission) => PermissionWidget(permission))
-                .toList(),
+        children: Permission.values
+            .where((permission) {
+              return permission != Permission.unknown &&
+                  permission != Permission.mediaLibrary &&
+                  permission != Permission.photosAddOnly &&
+                  permission != Permission.reminders &&
+                  permission != Permission.bluetooth &&
+                  permission != Permission.appTrackingTransparency &&
+                  permission != Permission.criticalAlerts &&
+                  permission != Permission.assistant &&
+                  permission != Permission.backgroundRefresh;
+            })
+            .map((permission) => PermissionWidget(permission))
+            .toList(),
       ),
     );
   }
@@ -118,18 +117,17 @@ class _PermissionState extends State<PermissionWidget> {
         _permissionStatus.toString(),
         style: TextStyle(color: getPermissionColor()),
       ),
-      trailing:
-          (widget._permission is PermissionWithService)
-              ? IconButton(
-                icon: const Icon(Icons.info, color: Colors.white),
-                onPressed: () {
-                  checkServiceStatus(
-                    context,
-                    widget._permission as PermissionWithService,
-                  );
-                },
-              )
-              : null,
+      trailing: (widget._permission is PermissionWithService)
+          ? IconButton(
+              icon: const Icon(Icons.info, color: Colors.white),
+              onPressed: () {
+                checkServiceStatus(
+                  context,
+                  widget._permission as PermissionWithService,
+                );
+              },
+            )
+          : null,
       onTap: () {
         requestPermission(widget._permission);
       },
