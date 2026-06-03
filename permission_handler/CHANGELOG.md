@@ -6,6 +6,7 @@
 ## 12.0.2
 
 - Updates the documentation to include instructions on Swift Package Manager (SPM) support.
+- Added support for the new Android 17 permission `ACCESS_LOCAL_NETWORK`
 
 ## 12.0.1
 
