@@ -1,3 +1,7 @@
+## 4.3.1
+
+* Added support for the new Android 17 permission `ACCESS_LOCAL_NETWORK`
+
 ## 4.3.0
 
 - Updates project dependencies.
