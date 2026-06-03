@@ -620,6 +620,7 @@ public class PermissionUtils {
                 break;
             case PermissionConstants.PERMISSION_GROUP_MEDIA_LIBRARY:
             case PermissionConstants.PERMISSION_GROUP_REMINDERS:
+            case PermissionConstants.PERMISSION_GROUP_ACCESS_LOCAL_NETWORK:
             case PermissionConstants.PERMISSION_GROUP_UNKNOWN:
                 return null;
         }
