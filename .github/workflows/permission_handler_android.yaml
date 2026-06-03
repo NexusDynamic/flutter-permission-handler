@@ -41,7 +41,7 @@ jobs:
       # Make sure the stable version of Flutter is available
       - uses: subosito/flutter-action@v2
         with:
-          channel: "beta"
+          channel: "stable"
 
       # Download all Flutter packages
       - name: Download dependencies
