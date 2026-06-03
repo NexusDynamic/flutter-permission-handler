@@ -42,23 +42,10 @@ jobs:
         with:
           distribution: "temurin" # See 'Supported distributions' for available options
           java-version: "17"
-      # Ensure that the android "platforms;android-37 is installed"
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v4
-        with:
-          packages: "tools platform-tools platforms;android-37.0"
-        # Symlink the android-37.0 to android-37
-      - name: Symlink android-37.0 to android-37
-        run: |
-          if [ -d "$ANDROID_HOME/platforms/android-37.0" ]; then
-            ln -s "$ANDROID_HOME/platforms/android-37.0" "$ANDROID_HOME/platforms/android-37"
-          else
-            echo "android-37.0 not found, skipping symlink"
-          fi
       # Make sure the stable version of Flutter is available
       - uses: subosito/flutter-action@v2
         with:
-          channel: "stable"
+          channel: "beta"
 
       # Download all Flutter packages
       - name: Download dependencies
