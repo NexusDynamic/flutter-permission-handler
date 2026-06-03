@@ -21,5 +21,6 @@ dev_dependencies:
   plugin_platform_interface: ^2.0.0
 
 environment:
-  sdk: ">=2.12.0 <4.0.0"
-  flutter: ">=2.0.0"
+  sdk: ^3.6.0
+  flutter: ">=3.24.0"
+resolution: workspace

@@ -6,8 +6,9 @@ homepage: https://github.com/baseflow/flutter-permission-handler/tree/master/per
 version: 4.3.2
 
 environment:
-  sdk: ^3.5.0
+  sdk: ^3.6.0
   flutter: ">=3.24.0"
+resolution: workspace
 
 dependencies:
   flutter:

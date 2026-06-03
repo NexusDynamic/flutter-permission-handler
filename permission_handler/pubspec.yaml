@@ -5,8 +5,9 @@ issue_tracker: https://github.com/Baseflow/flutter-permission-handler/issues
 version: 13.0.1
 
 environment:
-  sdk: ^3.5.0
+  sdk: ^3.6.0
   flutter: ">=3.24.0"
+resolution: workspace
 
 flutter:
   plugin:
