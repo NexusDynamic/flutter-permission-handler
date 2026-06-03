@@ -39,7 +39,7 @@ class WebPermissionHandler extends PermissionHandlerPlatform {
 
   /// Constructs a WebPermissionHandler.
   WebPermissionHandler({required WebDelegate webDelegate})
-    : _webDelegate = webDelegate;
+      : _webDelegate = webDelegate;
 
   @override
   Future<Map<Permission, PermissionStatus>> requestPermissions(

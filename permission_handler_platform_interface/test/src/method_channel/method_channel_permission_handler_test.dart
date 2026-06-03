@@ -4,10 +4,10 @@ import 'package:permission_handler_platform_interface/src/method_channel/method_
 import 'method_channel_mock.dart';
 
 List<Permission> get mockPermissions => List.of(<Permission>{
-  Permission.contacts,
-  Permission.camera,
-  Permission.calendarWriteOnly,
-});
+      Permission.contacts,
+      Permission.camera,
+      Permission.calendarWriteOnly,
+    });
 
 Map<Permission, PermissionStatus> get mockPermissionMap => {};
 
@@ -159,8 +159,8 @@ void main() {
         result: true,
       );
 
-      final hasOpenedAppSettings = await MethodChannelPermissionHandler()
-          .openAppSettings();
+      final hasOpenedAppSettings =
+          await MethodChannelPermissionHandler().openAppSettings();
 
       expect(hasOpenedAppSettings, true);
     });
@@ -172,8 +172,8 @@ void main() {
         result: false,
       );
 
-      final hasOpenedAppSettings = await MethodChannelPermissionHandler()
-          .openAppSettings();
+      final hasOpenedAppSettings =
+          await MethodChannelPermissionHandler().openAppSettings();
 
       expect(hasOpenedAppSettings, false);
     });

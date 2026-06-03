@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:baseflow_plugin_template/baseflow_plugin_template.dart';
 import 'package:flutter/material.dart';
 import 'package:permission_handler_platform_interface/permission_handler_platform_interface.dart';
@@ -16,11 +18,14 @@ void main() {
 ///Defines the main theme color
 final MaterialColor themeMaterialColor =
     BaseflowPluginExample.createMaterialColor(
-      const Color.fromRGBO(48, 49, 60, 1),
-    );
+  const Color.fromRGBO(48, 49, 60, 1),
+);
 
 /// A Flutter application demonstrating the functionality of this plugin
 class PermissionHandlerWidget extends StatefulWidget {
+  /// Creates a [PermissionHandlerWidget] that listens for permission status changes.
+  const PermissionHandlerWidget({super.key});
+
   /// Create a page containing the functionality of this plugin
   static ExamplePage createPage() {
     return ExamplePage(
@@ -30,11 +35,11 @@ class PermissionHandlerWidget extends StatefulWidget {
   }
 
   @override
-  _PermissionHandlerWidgetState createState() =>
-      _PermissionHandlerWidgetState();
+  PermissionHandlerWidgetState createState() => PermissionHandlerWidgetState();
 }
 
-class _PermissionHandlerWidgetState extends State<PermissionHandlerWidget> {
+/// State for the [PermissionHandlerWidget] that listens for permission status changes.
+class PermissionHandlerWidgetState extends State<PermissionHandlerWidget> {
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -59,18 +64,21 @@ class _PermissionHandlerWidgetState extends State<PermissionHandlerWidget> {
 /// Permission widget containing information about the passed [Permission]
 class PermissionWidget extends StatefulWidget {
   /// Constructs a [PermissionWidget] for the supplied [Permission]
-  const PermissionWidget(this._permission);
+  const PermissionWidget(this._permission, {super.key});
 
   final Permission _permission;
+
+  /// Returns the [Permission] associated with this widget.
+  Permission get permission => _permission;
 
   @override
-  _PermissionState createState() => _PermissionState(_permission);
+  PermissionWidgetState createState() => PermissionWidgetState();
 }
 
-class _PermissionState extends State<PermissionWidget> {
-  _PermissionState(this._permission);
-
-  final Permission _permission;
+/// State for the [PermissionWidget] that listens for permission status changes.
+class PermissionWidgetState extends State<PermissionWidget> {
+  /// Constructs a [PermissionWidgetState] for the supplied [PermissionWidget].
+  PermissionWidgetState();
   final PermissionHandlerPlatform _permissionHandler =
       PermissionHandlerPlatform.instance;
   PermissionStatus _permissionStatus = PermissionStatus.denied;
@@ -83,10 +91,12 @@ class _PermissionState extends State<PermissionWidget> {
   }
 
   void _listenForPermissionStatus() async {
-    final status = await _permissionHandler.checkPermissionStatus(_permission);
+    final status =
+        await _permissionHandler.checkPermissionStatus(widget.permission);
     setState(() => _permissionStatus = status);
   }
 
+  /// Returns the color to use for the permission status.
   Color getPermissionColor() {
     switch (_permissionStatus) {
       case PermissionStatus.denied:
@@ -104,30 +114,31 @@ class _PermissionState extends State<PermissionWidget> {
   Widget build(BuildContext context) {
     return ListTile(
       title: Text(
-        _permission.toString(),
+        widget.permission.toString(),
         style: Theme.of(context).textTheme.bodyLarge,
       ),
       subtitle: Text(
         _permissionStatus.toString(),
         style: TextStyle(color: getPermissionColor()),
       ),
-      trailing: (_permission is PermissionWithService)
+      trailing: (widget.permission is PermissionWithService)
           ? IconButton(
               icon: const Icon(Icons.info, color: Colors.white),
               onPressed: () {
                 checkServiceStatus(
                   context,
-                  _permission as PermissionWithService,
+                  widget.permission as PermissionWithService,
                 );
               },
             )
           : null,
       onTap: () {
-        requestPermission(_permission);
+        requestPermission(widget.permission);
       },
     );
   }
 
+  /// Requests permission for the given [Permission].
   void checkServiceStatus(
     BuildContext context,
     PermissionWithService permission,
@@ -141,6 +152,7 @@ class _PermissionState extends State<PermissionWidget> {
     );
   }
 
+  /// Requests permission for the given [Permission].
   Future<void> requestPermission(Permission permission) async {
     final status = await _permissionHandler.requestPermissions([permission]);
 
